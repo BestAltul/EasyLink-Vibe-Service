@@ -1,5 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://prod-db-host:5432/vibe_db
-    username: prod_user
-    password: ${DB_PASSWORD}

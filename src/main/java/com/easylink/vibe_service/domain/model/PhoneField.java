@@ -8,18 +8,19 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@DiscriminatorValue("EMAIL")
-public class EmailField extends VibeField{
+@DiscriminatorValue("PHONE")
+public class PhoneField extends VibeField{
 
-    private String email;
+    private String phone;
+
 
     @Override
     public String getType() {
-        return "email";
+        return "phone";
     }
 
     @Override
     public String getValue() {
-        return email;
+        return phone;
     }
 }

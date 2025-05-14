@@ -21,6 +21,9 @@ public abstract class VibeField {
     @JoinColumn(name = "vibe_id")
     private Vibe vibe;
 
+    private Long accountVibeId;
+
+
     public abstract String getType();
     public abstract String getValue();
 }

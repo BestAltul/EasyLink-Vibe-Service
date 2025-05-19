@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Getter
@@ -13,7 +15,7 @@ public abstract class VibeField {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id;
 
     private String label;
 

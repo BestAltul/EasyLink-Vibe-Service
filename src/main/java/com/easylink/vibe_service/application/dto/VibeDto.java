@@ -1,6 +1,8 @@
 package com.easylink.vibe_service.application.dto;
 
+import java.util.UUID;
+
 public class VibeDto {
-    private Long id;
+    private UUID id;
     private String name;
 }

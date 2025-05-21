@@ -7,8 +7,6 @@ import java.util.UUID;
 
 public class VibeRequestMapper {
     public static CreateVibeCommand toCommand(CreateVibeRequest request, UUID accountId){
-        return new CreateVibeCommand(
-
-        );
+        return new CreateVibeCommand(request.getTitle(),request.getFieldIds());
     }
 }

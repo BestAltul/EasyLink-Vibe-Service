@@ -2,12 +2,16 @@ package com.easylink.vibe_service.domain.model;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Setter
+@Getter
 public class Vibe {
 
     @Id

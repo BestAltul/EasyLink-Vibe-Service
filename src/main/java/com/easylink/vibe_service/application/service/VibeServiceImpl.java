@@ -16,6 +16,7 @@ public class VibeServiceImpl implements CreateVibeUseCase {
     public VibeDto create(CreateVibeCommand command) {
         Vibe vibe = new Vibe();
         vibe.setTitle(command.getTitle());
+        vibe.setVibeAccountId(command.getAccountId());
 
         Vibe savedVibe = vibeRepositoryPort.save(vibe);
 

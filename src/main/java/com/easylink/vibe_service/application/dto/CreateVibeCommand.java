@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -13,4 +14,5 @@ import java.util.List;
 public class CreateVibeCommand {
     private String title;
     private List<Long> fieldIds;
+    private UUID accountId;
 }

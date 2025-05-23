@@ -13,6 +13,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CreateVibeCommand {
     private String title;
-    private List<Long> fieldIds;
+    private List<UUID> fieldIds;
     private UUID accountId;
 }

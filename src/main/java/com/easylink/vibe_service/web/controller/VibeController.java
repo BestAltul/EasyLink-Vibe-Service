@@ -10,9 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -30,6 +28,11 @@ public class VibeController {
         VibeDto vibeDto = createVibeUseCase.create(VibeRequestMapper.toCommand(request,accountId));
 
         return ResponseEntity.ok(VibeResponseMapper.roResponse(vibeDto));
+    }
+
+    public ResponseEntity<VibeResponse> update(@PathVariable UUID id
+                                               ){
+
     }
 }
 

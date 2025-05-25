@@ -5,6 +5,9 @@ import com.easylink.vibe_service.domain.model.Vibe;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Repository
 @RequiredArgsConstructor
 public class JpaVibeRepositoryAdapter  implements VibeRepositoryPort {
@@ -14,5 +17,10 @@ public class JpaVibeRepositoryAdapter  implements VibeRepositoryPort {
     @Override
     public Vibe save(Vibe vibe){
         return  delegate.save(vibe);
+    }
+
+    @Override
+    public Optional<Vibe> findById(UUID id) {
+        return delegate.findById(id);
     }
 }

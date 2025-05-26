@@ -3,18 +3,21 @@ package com.easylink.vibe_service.application.service;
 import com.easylink.vibe_service.application.dto.CreateVibeCommand;
 import com.easylink.vibe_service.application.dto.UpdateVibeCommand;
 import com.easylink.vibe_service.application.dto.VibeDto;
-import com.easylink.vibe_service.application.port.in.CreateVibeUseCase;
-import com.easylink.vibe_service.application.port.in.UpdateVibeUseCase;
+import com.easylink.vibe_service.application.mapper.VibeDtoMapper;
+import com.easylink.vibe_service.application.port.in.*;
 import com.easylink.vibe_service.application.port.out.VibeFieldRepositoryPort;
 import com.easylink.vibe_service.application.port.out.VibeRepositoryPort;
 import com.easylink.vibe_service.domain.model.Vibe;
 import com.easylink.vibe_service.domain.model.VibeField;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
+@Service
 @RequiredArgsConstructor
-public class VibeServiceImpl implements CreateVibeUseCase, UpdateVibeUseCase {
+public class VibeServiceImpl implements CreateVibeUseCase, UpdateVibeUseCase, DeleteVibeUseCase, GetVibeUseCase, GetVibeByIdUseCase {
 
     private final VibeRepositoryPort vibeRepositoryPort;
     private final VibeFieldRepositoryPort vibeFieldRepositoryPort;
@@ -30,9 +33,8 @@ public class VibeServiceImpl implements CreateVibeUseCase, UpdateVibeUseCase {
         vibe.setFields(vibeFieldList);
 
         Vibe savedVibe = vibeRepositoryPort.save(vibe);
-        VibeDto vibeDto = new VibeDto();
-        vibeDto.setId(vibe.getId());
-        vibeDto.setTitle(vibe.getTitle());
+
+        VibeDto vibeDto = VibeDtoMapper.toDto(vibe);
 
         return vibeDto;
     }
@@ -55,6 +57,32 @@ public class VibeServiceImpl implements CreateVibeUseCase, UpdateVibeUseCase {
         VibeDto vibeDto = new VibeDto();
         vibeDto.setId(updated.getId());
         vibeDto.setTitle(updateVibeCommand.getTitle());
+
+        return vibeDto;
+    }
+
+    @Override
+    public void delete(UUID id, UUID accountId) {
+        Vibe vibe = vibeRepositoryPort.findById(id).orElseThrow(()->new RuntimeException("Vibe not found"));
+
+        if(!vibe.getVibeAccountId().equals(accountId)){
+            throw new SecurityException("Access denied");
+        }
+
+        vibeRepositoryPort.delete(vibe);
+    }
+
+    @Override
+    public List<VibeDto> findAll(UUID accountId) {
+
+        return List.of();
+    }
+
+    @Override
+    public VibeDto getVibeById(UUID id) {
+        Vibe vibe = vibeRepositoryPort.findById(id).orElseThrow(()->new RuntimeException("Vibe not found"));
+
+        VibeDto vibeDto = VibeDtoMapper.toDto(vibe);
 
         return vibeDto;
     }

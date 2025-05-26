@@ -73,9 +73,13 @@ public class VibeServiceImpl implements CreateVibeUseCase, UpdateVibeUseCase, De
     }
 
     @Override
-    public List<VibeDto> findAll(UUID accountId) {
+    public List<VibeDto> findAllByVibeAccountId(UUID accountId) {
 
-        return List.of();
+        List<Vibe> vibeDtoList = vibeRepositoryPort.findAllByAccountId(accountId);
+
+        List<VibeDto> dtoList = vibeDtoList.stream().map(VibeDtoMapper::toDto).toList();
+
+        return dtoList;
     }
 
     @Override

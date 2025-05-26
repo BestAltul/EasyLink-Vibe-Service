@@ -31,7 +31,7 @@ public class JpaVibeRepositoryAdapter  implements VibeRepositoryPort {
     }
 
     @Override
-    public List<Vibe> findAll() {
-        return delegate.findAll();
+    public List<Vibe> findAllByAccountId(UUID id) {
+        return delegate.findAllByVibeAccountId(id);
     }
 }

@@ -6,8 +6,8 @@ import com.easylink.vibe_service.domain.model.Vibe;
 public class VibeDtoMapper {
     public static VibeDto toDto(Vibe vibe){
         VibeDto vibeDto = new VibeDto();
-        vibeDto.setTitle(vibeDto.getTitle());
-        vibeDto.setId(vibeDto.getId());
+        vibeDto.setTitle(vibe.getTitle());
+        vibeDto.setId(vibe.getId());
         return vibeDto;
     }
 }

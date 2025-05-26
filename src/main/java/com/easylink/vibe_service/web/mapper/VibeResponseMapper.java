@@ -5,10 +5,9 @@ import com.easylink.vibe_service.web.dto.VibeResponse;
 
 public class VibeResponseMapper {
     public static VibeResponse toResponse(VibeDto vibeDto){
-        return new VibeResponse(
-
-
-
-        );
+        VibeResponse response = new VibeResponse();
+        response.setId(vibeDto.getId());
+        response.setTitle(vibeDto.getTitle());
+        return response;
     }
 }

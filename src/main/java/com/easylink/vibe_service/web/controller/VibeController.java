@@ -77,7 +77,7 @@ public class VibeController {
 
         UUID accountId = UUID.fromString(jwt.getSubject());
 
-        List<VibeDto> vibeDtoList = getVibeUseCase.findAll(accountId);
+        List<VibeDto> vibeDtoList = getVibeUseCase.findAllByVibeAccountId(accountId);
 
         return ResponseEntity.ok((vibeDtoList.stream().map(VibeResponseMapper::toResponse)).toList());
     }
